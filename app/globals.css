@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-brand-50: #e8fbf8;
+  --color-brand-100: #c5f4ec;
+  --color-brand-200: #94e8db;
+  --color-brand-500: #12b5a2;
+  --color-brand-600: #0e9f8e;
+  --color-brand-700: #0b7f72;
+  --color-brand-900: #0b3b36;
+  --color-ink: #0b1f3a;
+  --color-panel: #ffffff;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7f8;
+  font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media print {
+  aside, header, nav, .no-print { display: none !important; }
+  body { background: #fff; }
+  main { padding: 0 !important; }
+}
+
+/* ---- Panel de administración: misma estética oscura del sitio (negro, morado de marca, dorado) ---- */
+.tema-panel {
+  color-scheme: dark;
+  --color-panel: #121212;
+  --color-ink: #f3ede3;
+  --color-slate-50: #0f0f0f;
+  --color-slate-100: #1c1c1c;
+  --color-slate-200: #2a2a2a;
+  --color-slate-300: #3a3a3a;
+  --color-slate-400: #7d776e;
+  --color-slate-500: #a8a29a;
+  --color-slate-600: #c9c3b8;
+  --color-slate-700: #ddd6ca;
+  --color-slate-800: #ece5d9;
+  --color-brand-50: #241430;
+  --color-brand-100: #341c46;
+  --color-brand-200: #5b3377;
+  --color-brand-500: #b36ad4;
+  --color-brand-600: #994bbb;
+  --color-brand-700: #c79be0;
+  --color-brand-900: #1a0f22;
+  --color-red-50: #2b1416;
+  --color-red-100: #3b1a1d;
+  --color-red-600: #f87171;
+  --color-red-700: #fca5a5;
+  --color-green-50: #11281b;
+  --color-green-100: #163523;
+  --color-green-700: #4ade80;
+  --color-green-800: #86efac;
+  background: #080808;
+  color: var(--color-ink);
+}
+
+/* Al imprimir una factura, se vuelve a papel claro */
+@media print {
+  .tema-panel {
+    color-scheme: light;
+    --color-panel: #ffffff; --color-ink: #0b1f3a;
+    --color-slate-50: #f8fafc; --color-slate-100: #f1f5f9; --color-slate-200: #e2e8f0; --color-slate-300: #cbd5e1;
+    --color-slate-400: #94a3b8; --color-slate-500: #64748b; --color-slate-600: #475569; --color-slate-700: #334155; --color-slate-800: #1e293b;
+    --color-brand-50: #e8fbf8; --color-brand-100: #c5f4ec; --color-brand-200: #94e8db; --color-brand-500: #12b5a2;
+    --color-brand-600: #0e9f8e; --color-brand-700: #0b7f72; --color-brand-900: #0b3b36;
+    --color-red-50: #fef2f2; --color-red-100: #fee2e2; --color-red-600: #dc2626; --color-red-700: #b91c1c;
+    --color-green-50: #f0fdf4; --color-green-100: #dcfce7; --color-green-700: #15803d; --color-green-800: #166534;
+    background: #fff;
+  }
+}
+
+/* Autocompletado del navegador: conservar el fondo oscuro del panel */
+.tema-panel input:-webkit-autofill,
+.tema-panel input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #121212 inset;
+  -webkit-text-fill-color: #f3ede3;
+  caret-color: #f3ede3;
 }

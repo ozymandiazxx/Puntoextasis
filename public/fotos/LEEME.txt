@@ -1,0 +1,10 @@
+Coloca aqui las fotos del sitio (jpg, png o webp) con estos nombres:
+
+  hero                     Foto grande de la portada (botellas, ambiente nocturno). Horizontal, min. 1920 px.
+  categoria-whisky   categoria-ron   categoria-vodka   categoria-vinos
+  categoria-cervezas   categoria-tequila   categoria-snacks     Fotos de cada categoria (horizontal o cuadrada).
+  momento-reuniones   momento-celebraciones   momento-eventos   momento-regalos     Fotos de estilo de vida.
+
+Ejemplo: public/fotos/hero.jpg
+Despues de agregar o cambiar fotos, reinicia "npm run dev" (en Vercel se actualiza solo al desplegar).
+Las fotos de cada PRODUCTO no van aqui: se suben desde Productos, en el panel.
