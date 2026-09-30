@@ -86,7 +86,7 @@ export default function Dashboard() {
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {ACCESOS.map((a) => (
           <Link key={a.href} href={a.href}
-            className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-panel p-4 text-center text-sm font-semibold transition hover:border-brand-500">
+            className="flex flex-col items-center gap-2 rounded-2xl border border-slate-200 bg-panel p-4 text-center max-sm:last:col-span-2 text-sm font-semibold transition hover:border-brand-500">
             <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-50 text-brand-700">
               <Icon name={a.icon} className="h-6 w-6" />
             </span>

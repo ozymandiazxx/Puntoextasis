@@ -138,7 +138,35 @@ export default function Productos() {
         </div>
       </Card>
 
-      <Card className="overflow-x-auto !p-0">
+      {/* Celular: tarjetas */}
+      <div className="space-y-3 md:hidden">
+        {visibles.length === 0 ? <Card><Empty text="No hay productos" /></Card> : visibles.map((p) => (
+          <Card key={p.id} className="!p-4">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-semibold leading-snug">{p.nombre}</p>
+                <p className="text-sm text-slate-500">{[p.marca, p.presentacion, catNombre(p.categoria_id)].filter((x) => x && x !== "—").join(" · ")}</p>
+                {p.publicado && <span className="mt-1 inline-block rounded-full bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-700">En la web</span>}
+              </div>
+              <div className="shrink-0 text-right">
+                <p className="text-lg font-semibold">{money(p.precio_venta)}</p>
+                <p className="text-xs text-green-700">+{money(p.ganancia_unidad)} ({p.ganancia_pct}%)</p>
+              </div>
+            </div>
+            <div className="mt-3 flex items-center justify-between">
+              <span className={`text-sm ${!p.es_servicio && p.stock <= p.stock_minimo ? "font-semibold text-red-600" : "text-slate-500"}`}>
+                {p.es_servicio ? "Servicio" : `Stock: ${p.stock}`} <span className="text-slate-400">· costo {money(p.costo)}</span>
+              </span>
+              <div className="flex gap-2">
+                <Btn variant="ghost" className="!px-4 !py-2" onClick={() => abrirEditar(p)}>Editar</Btn>
+                <Btn variant="danger" className="!px-3 !py-2" onClick={() => eliminar(p)}>✕</Btn>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="hidden overflow-x-auto !p-0 md:block">
         {visibles.length === 0 ? <Empty text="No hay productos" /> : (
           <table className="w-full min-w-[720px] text-left">
             <thead className="bg-slate-50 text-sm text-slate-500">

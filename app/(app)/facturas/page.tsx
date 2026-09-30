@@ -58,13 +58,37 @@ export default function ListadoFacturas() {
         </div>
       </Card>
 
-      <div className="mb-4 grid gap-4 sm:grid-cols-3">
+      <div className="mb-4 grid grid-cols-3 gap-2 sm:gap-4">
         <Stat label={`Facturado (${visibles.length})`} value={money(facturado)} />
         <Stat label="Cobrado" value={money(cobrado)} tone="text-green-700" />
         <Stat label="Por cobrar" value={money(pendiente)} tone={pendiente > 0 ? "text-red-600" : ""} />
       </div>
 
-      <Card className="overflow-x-auto !p-0">
+      {/* Celular: tarjetas */}
+      <div className="space-y-3 md:hidden">
+        {visibles.length === 0 ? <Card><Empty text="No hay facturas en este periodo" /></Card> : visibles.map((f) => {
+          const saldo = f.total - f.monto_pagado;
+          return (
+            <Link key={f.id} href={`/ventas/${f.id}`} className="block rounded-2xl border border-slate-200 bg-panel p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-semibold text-brand-700">#{f.numero}</p>
+                  <p className="truncate">{f.clientes?.nombre ?? "Consumidor final"}</p>
+                  <p className="text-xs text-slate-500">{fechaCorta(f.fecha)}</p>
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className="text-lg font-semibold">{money(f.total)}</p>
+                  <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${f.estado_pago === "pagada" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                    {f.estado_pago === "pagada" ? "Pagada" : `Debe ${money(saldo)}`}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      <Card className="hidden overflow-x-auto !p-0 md:block">
         {visibles.length === 0 ? <Empty text="No hay facturas en este periodo" /> : (
           <table className="w-full min-w-[640px] text-left">
             <thead className="bg-slate-50 text-sm text-slate-500">

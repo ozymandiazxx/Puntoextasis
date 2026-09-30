@@ -99,10 +99,10 @@ export default function SitioWeb() {
         </Link>
       </PageHeader>
 
-      <div className="mb-4 grid gap-4 sm:grid-cols-3">
-        <Stat label="Productos en la tienda" value={String(publicados)} />
+      <div className="mb-4 grid grid-cols-3 gap-2 sm:gap-4">
+        <Stat label="En la tienda" value={String(publicados)} />
         <Stat label="Ocultos" value={String(filas.length - publicados)} />
-        <Stat label="Fotos del sitio cargadas" value={`${Object.keys(fotos).length} de ${ESPACIOS.length}`} />
+        <Stat label="Fotos cargadas" value={`${Object.keys(fotos).length} de ${ESPACIOS.length}`} />
       </div>
 
       {aviso && <p className="mb-3 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-700">{aviso}</p>}

@@ -49,20 +49,20 @@ export default function Catalogo({ productos, categoriaInicial = "" }: { product
       {visibles.length === 0 ? (
         <p className="py-14 text-center text-[#a8a29a]">No encontramos productos con ese filtro.</p>
       ) : (
-        <div className="grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-4 sm:gap-y-10 md:grid-cols-3 lg:grid-cols-4">
           {visibles.map((p) => (
             <article key={p.id} className="group flex flex-col">
               <div className="overflow-hidden rounded-lg bg-[#141414]">
                 <Foto src={p.imagen_url} alt={p.nombre} contener className="aspect-[4/5] w-full transition duration-500 group-hover:scale-[1.03]" />
               </div>
               <p className="mt-4 text-xs uppercase tracking-[0.18em] text-[#c6a15b]">{p.marca || p.categoria || " "}</p>
-              <h3 className="mt-1 font-[family-name:var(--font-serif)] text-xl font-semibold leading-snug text-[#f3ede3]">{p.nombre}</h3>
+              <h3 className="mt-1 font-[family-name:var(--font-serif)] text-lg font-semibold sm:text-xl leading-snug text-[#f3ede3]">{p.nombre}</h3>
               {p.presentacion && <p className="text-sm text-[#a8a29a]">{p.presentacion}</p>}
-              <div className="mt-auto flex items-center justify-between gap-2 pt-4">
+              <div className="mt-auto flex flex-col gap-2 pt-3 sm:flex-row sm:items-center sm:justify-between sm:pt-4">
                 <span className="text-lg font-medium text-[#f3ede3]">{dinero(p.precio)}</span>
                 {p.disponible ? (
                   <button onClick={() => agregar(p)}
-                    className="rounded-full border border-[#994bbb] px-5 py-2 text-sm font-semibold text-[#f3ede3] transition hover:bg-[#994bbb]">
+                    className="w-full rounded-full border border-[#994bbb] px-5 py-2.5 text-sm font-semibold sm:w-auto sm:py-2 text-[#f3ede3] transition hover:bg-[#994bbb]">
                     Comprar
                   </button>
                 ) : (

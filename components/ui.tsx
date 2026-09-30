@@ -49,9 +49,9 @@ export function PageHeader({ title, children }: { title: string; children?: Reac
 
 export function Stat({ label, value, tone = "" }: { label: string; value: string; tone?: string }) {
   return (
-    <Card>
-      <p className="text-sm text-slate-500">{label}</p>
-      <p className={`mt-1 text-2xl font-bold ${tone}`}>{value}</p>
+    <Card className="!p-3 sm:!p-5">
+      <p className="text-xs text-slate-500 sm:text-sm">{label}</p>
+      <p className={`mt-1 text-lg font-bold sm:text-2xl ${tone}`}>{value}</p>
     </Card>
   );
 }
@@ -96,9 +96,9 @@ export function FiltroPeriodo({ value, onChange }: { value: Periodo; onChange: (
           {p === "hoy" ? "Hoy" : p === "semana" ? "Semana" : "Mes"}
         </Btn>
       ))}
-      <input type="date" className={inputCls + " !w-auto !py-2"} value={value.desde}
+      <input type="date" className={inputCls + " !w-[calc(50%-0.25rem)] !py-2 sm:!w-auto"} value={value.desde}
         onChange={(e) => onChange({ ...value, desde: e.target.value })} />
-      <input type="date" className={inputCls + " !w-auto !py-2"} value={value.hasta}
+      <input type="date" className={inputCls + " !w-[calc(50%-0.25rem)] !py-2 sm:!w-auto"} value={value.hasta}
         onChange={(e) => onChange({ ...value, hasta: e.target.value })} />
     </div>
   );

@@ -73,10 +73,10 @@ export default function Gastos() {
   return (
     <>
       <PageHeader title="Gastos"><Btn onClick={() => { setF(nuevo()); setError(""); }}>+ Nuevo gasto</Btn></PageHeader>
-      <div className="mb-4 grid gap-4 sm:grid-cols-3">
-        <Stat label="Gastado hoy" value={money(hoyTotal)} />
-        <Stat label="Gastado este mes" value={money(mesTotal)} />
-        <Stat label="Total (últimos 200)" value={money(total)} />
+      <div className="mb-4 grid grid-cols-3 gap-2 sm:gap-4">
+        <Stat label="Hoy" value={money(hoyTotal)} />
+        <Stat label="Este mes" value={money(mesTotal)} />
+        <Stat label="Total" value={money(total)} />
       </div>
 
       <div className="mb-3 flex flex-wrap items-center gap-2">

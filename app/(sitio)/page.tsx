@@ -55,9 +55,9 @@ const Check = () => (
 
 function Titulo({ etiqueta, titulo, texto }: { etiqueta: string; titulo: string; texto?: string }) {
   return (
-    <div className="mb-12 max-w-2xl">
+    <div className="mb-8 max-w-2xl sm:mb-12">
       <p className="text-xs uppercase tracking-[0.3em] text-[#c6a15b]">{etiqueta}</p>
-      <h2 className="mt-3 font-[family-name:var(--font-serif)] text-4xl font-semibold leading-tight sm:text-5xl">{titulo}</h2>
+      <h2 className="mt-3 font-[family-name:var(--font-serif)] text-3xl font-semibold leading-tight sm:text-5xl">{titulo}</h2>
       {texto && <p className="mt-4 text-[#a8a29a]">{texto}</p>}
     </div>
   );
@@ -65,7 +65,7 @@ function Titulo({ etiqueta, titulo, texto }: { etiqueta: string; titulo: string;
 
 const Seccion = ({ id, children, fondo = "" }: { id: string; children: React.ReactNode; fondo?: string }) => (
   <section id={id} className={`scroll-mt-16 ${fondo}`}>
-    <div className="mx-auto max-w-7xl px-5 py-20 sm:py-28">{children}</div>
+    <div className="mx-auto max-w-7xl px-5 py-14 sm:py-28">{children}</div>
   </section>
 );
 
@@ -75,8 +75,8 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
   const foto = (nombre: string): string | null => fotosDB[nombre] ?? fotoManifest(nombre);
   const heroFoto = foto("hero");
 
-  const botonPrimario = "inline-flex items-center justify-center rounded-full bg-[#994bbb] px-8 py-3.5 font-semibold text-white transition hover:bg-[#8540a6]";
-  const botonSecundario = "inline-flex items-center justify-center rounded-full border border-white/30 px-8 py-3.5 font-semibold text-[#f3ede3] transition hover:border-[#c6a15b] hover:text-[#c6a15b]";
+  const botonPrimario = "inline-flex w-full items-center justify-center sm:w-auto rounded-full bg-[#994bbb] px-8 py-3.5 font-semibold text-white transition hover:bg-[#8540a6]";
+  const botonSecundario = "inline-flex w-full items-center justify-center sm:w-auto rounded-full border border-white/30 px-8 py-3.5 font-semibold text-[#f3ede3] transition hover:border-[#c6a15b] hover:text-[#c6a15b]";
 
   return (
     <CarritoProvider>
@@ -87,20 +87,20 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
       <section id="inicio" className="relative isolate overflow-hidden border-b border-white/10">
         {heroFoto && <img src={heroFoto} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" />}
         <div className={`absolute inset-0 -z-10 ${heroFoto ? "bg-black/65" : "bg-[#0c0c0c]"}`} />
-        <div className="mx-auto flex max-w-4xl flex-col items-center px-5 py-20 text-center sm:py-32">
-          <img src="/logo.png" alt="Punto Éxtasis Licorería" className="h-36 w-36 rounded-full sm:h-44 sm:w-44" />
-          <p className="mt-10 text-xs uppercase tracking-[0.35em] text-[#c6a15b]">Santo Domingo · Ecuador</p>
-          <h1 className="mt-4 font-[family-name:var(--font-serif)] text-5xl font-semibold leading-[1.05] sm:text-7xl">
+        <div className="mx-auto flex max-w-4xl flex-col items-center px-5 py-12 text-center sm:py-32">
+          <img src="/logo.png" alt="Punto Éxtasis Licorería" className="h-28 w-28 rounded-full sm:h-44 sm:w-44" />
+          <p className="mt-7 text-xs sm:mt-10 uppercase tracking-[0.35em] text-[#c6a15b]">Santo Domingo · Ecuador</p>
+          <h1 className="mt-4 font-[family-name:var(--font-serif)] text-4xl font-semibold leading-[1.1] sm:text-7xl">
             Punto Éxtasis, tu licorería premium en Santo Domingo
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-[#c9c3b8]">
+          <p className="mt-5 max-w-xl text-base text-[#c9c3b8] sm:mt-6 sm:text-lg">
             Licores premium, buenos precios y delivery rápido hasta tu puerta.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <div className="mt-8 flex w-full max-w-xs flex-col gap-3 sm:mt-10 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className={botonPrimario}>Pedir por WhatsApp</a>
             <a href="#catalogo" className={botonSecundario}>Ver catálogo</a>
           </div>
-          <ul className="mt-14 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-[#c9c3b8]">
+          <ul className="mt-10 flex flex-wrap sm:mt-14 justify-center gap-x-8 gap-y-3 text-sm text-[#c9c3b8]">
             {["Productos originales", "Delivery en Santo Domingo", "Atención personalizada"].map((t) => (
               <li key={t} className="flex items-center gap-2"><Check />{t}</li>
             ))}
@@ -111,10 +111,10 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
       {/* 2. CATEGORÍAS */}
       <Seccion id="categorias">
         <Titulo etiqueta="Explora" titulo="Nuestras categorías" />
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+        <div className="-mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
           {CATEGORIAS.map((c, i) => (
             <Link key={c.nombre} href={`/?cat=${encodeURIComponent(c.nombre)}#catalogo`} scroll
-              className={`group relative block h-56 overflow-hidden rounded-lg sm:h-72 ${i === 0 ? "md:col-span-2" : ""}`}>
+              className={`group relative block h-56 w-44 flex-none snap-start overflow-hidden rounded-lg sm:h-72 md:w-auto ${i === 0 ? "md:col-span-2" : ""}`}>
               <Foto src={foto(c.foto)} alt={c.nombre} className="h-full w-full transition duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
               <div className="absolute bottom-0 left-0 p-5">
@@ -136,13 +136,13 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
       {/* 4. EXPERIENCIA DE MARCA */}
       <Seccion id="momentos">
         <Titulo etiqueta="Experiencia" titulo="No solo vendemos licor, creamos momentos." />
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
           {MOMENTOS.map((m) => (
             <figure key={m.titulo}>
-              <Foto src={foto(m.foto)} alt={m.titulo} className="aspect-[3/4] w-full rounded-lg" />
+              <Foto src={foto(m.foto)} alt={m.titulo} className="aspect-square w-full rounded-lg sm:aspect-[3/4]" />
               <figcaption className="mt-4">
-                <p className="font-[family-name:var(--font-serif)] text-2xl font-semibold">{m.titulo}</p>
-                <p className="mt-1 text-sm text-[#a8a29a]">{m.texto}</p>
+                <p className="font-[family-name:var(--font-serif)] text-xl font-semibold sm:text-2xl">{m.titulo}</p>
+                <p className="mt-1 text-xs text-[#a8a29a] sm:text-sm">{m.texto}</p>
               </figcaption>
             </figure>
           ))}
@@ -184,13 +184,13 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
       {/* 6. EVENTOS Y PROMOCIONES */}
       <Seccion id="eventos">
         <Titulo etiqueta="Eventos y promociones" titulo="Para cada ocasión" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {EVENTOS.map((e) => (
-            <div key={e.titulo} className="flex flex-col rounded-lg border border-white/10 p-7 transition hover:border-[#c6a15b]/60">
-              <p className="font-[family-name:var(--font-serif)] text-2xl font-semibold">{e.titulo}</p>
-              <p className="mt-3 flex-1 text-sm text-[#a8a29a]">{e.texto}</p>
+            <div key={e.titulo} className="flex flex-col rounded-lg border border-white/10 p-4 transition hover:border-[#c6a15b]/60 sm:p-7">
+              <p className="font-[family-name:var(--font-serif)] text-xl font-semibold sm:text-2xl">{e.titulo}</p>
+              <p className="mt-2 flex-1 text-xs text-[#a8a29a] sm:mt-3 sm:text-sm">{e.texto}</p>
               <a href={whatsappLink(`Hola Punto Éxtasis, quiero información sobre: ${e.titulo}`)} target="_blank" rel="noopener noreferrer"
-                className="mt-6 text-sm font-semibold text-[#c6a15b] hover:underline">Consultar →</a>
+                className="mt-4 text-sm font-semibold text-[#c6a15b] hover:underline sm:mt-6">Consultar →</a>
             </div>
           ))}
         </div>
@@ -239,7 +239,7 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
           <iframe title="Mapa: ubicación de Punto Éxtasis" src={mapaEmbed} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             className="h-72 w-full rounded-lg border border-white/10 sm:h-96" />
         </div>
-        <div className="border-t border-white/10 px-5 py-6 text-center text-xs text-[#7d776e]">
+        <div className="border-t border-white/10 px-5 pb-24 pt-6 text-center text-xs text-[#7d776e] sm:pb-6">
           <p>Prohibida la venta de bebidas alcohólicas a menores de 18 años. Consume con responsabilidad.</p>
           <p className="mt-2">© {new Date().getFullYear()} Punto Éxtasis · <Link href="/panel" className="text-[#a8a29a] underline-offset-4 hover:text-white hover:underline">Administración</Link></p>
         </div>

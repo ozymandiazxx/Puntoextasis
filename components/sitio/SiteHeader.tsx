@@ -41,8 +41,8 @@ export default function SiteHeader() {
           </a>
           <BotonCarrito />
           <a href={whatsappLink()} target="_blank" rel="noopener noreferrer"
-            className="hidden rounded-full bg-[#994bbb] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#8540a6] sm:block">
-            Pedir por WhatsApp
+            className="rounded-full bg-[#994bbb] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#8540a6] sm:px-5">
+            <span className="sm:hidden">Pedir</span><span className="hidden sm:inline">Pedir por WhatsApp</span>
           </a>
           <button onClick={() => setAbierto(!abierto)} aria-label="Menú" className="rounded-full border border-white/15 p-2.5 text-[#f3ede3] lg:hidden">
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">

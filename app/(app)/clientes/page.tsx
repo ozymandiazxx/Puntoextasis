@@ -60,9 +60,9 @@ export default function Clientes() {
   return (
     <>
       <PageHeader title="Clientes"><Btn onClick={() => { setEdit(vacio); setError(""); }}>+ Nuevo cliente</Btn></PageHeader>
-      <div className="mb-4 grid gap-4 sm:grid-cols-2">
-        <Stat label="Clientes registrados" value={String(lista.length)} />
-        <Stat label="Por cobrar (facturas pendientes)" value={money(porCobrar)} tone={porCobrar > 0 ? "text-red-600" : ""} />
+      <div className="mb-4 grid grid-cols-2 gap-2 sm:gap-4">
+        <Stat label="Clientes" value={String(lista.length)} />
+        <Stat label="Por cobrar" value={money(porCobrar)} tone={porCobrar > 0 ? "text-red-600" : ""} />
       </div>
       <input className={inputCls + " mb-4"} placeholder="Buscar por nombre, cédula/RUC o teléfono" value={q} onChange={(e) => setQ(e.target.value)} />
 

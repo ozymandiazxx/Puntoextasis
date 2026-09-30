@@ -58,7 +58,7 @@ export default function Reportes() {
       <PageHeader title="Reportes" />
       <Card className="mb-4"><FiltroPeriodo value={per} onChange={setPer} /></Card>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:grid-cols-4">
         <Stat label="Ventas" value={money(totalVentas)} />
         <Stat label="Ganancia en ventas" value={money(gananciaBruta)} tone="text-green-700" />
         <Stat label="Gastos" value={money(totalGastos)} tone="text-red-600" />
