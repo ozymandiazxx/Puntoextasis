@@ -116,7 +116,7 @@ export default async function Sitio({ searchParams }: { searchParams: Promise<{ 
             <Link key={c.nombre} href={`/?cat=${encodeURIComponent(c.nombre)}#catalogo`} scroll
               className={`group relative block h-56 w-44 flex-none snap-start overflow-hidden rounded-lg sm:h-72 md:w-auto ${i === 0 ? "md:col-span-2" : ""}`}>
               <Foto src={foto(c.foto)} alt={c.nombre} className="h-full w-full transition duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/35 transition group-hover:bg-black/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 transition group-hover:opacity-80" />
               <div className="absolute bottom-0 left-0 p-5">
                 <p className="font-[family-name:var(--font-serif)] text-3xl font-semibold">{c.nombre}</p>
                 <span className="mt-2 block h-px w-8 bg-[#c6a15b] transition-all group-hover:w-16" />

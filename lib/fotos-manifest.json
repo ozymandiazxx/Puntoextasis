@@ -1,1 +1,8 @@
-{}
+{
+  "categoria-cervezas": "/fotos/categoria-cervezas.jpg",
+  "categoria-ron": "/fotos/categoria-ron.jpg",
+  "categoria-tequila": "/fotos/categoria-tequila.jpg",
+  "categoria-vinos": "/fotos/categoria-vinos.jpg",
+  "categoria-vodka": "/fotos/categoria-vodka.jpg",
+  "categoria-whisky": "/fotos/categoria-whisky.jpg"
+}
